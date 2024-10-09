@@ -1,0 +1,102 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Zadanie 1");
+        String a = "Adrian Skamarski";
+        System.out.println(a);
+        System.out.println("Zadanie 2");
+        System.out.println(a.length());
+        System.out.println("Zadanie 3");
+        String x = "Ala ";
+        String y = "ma ";
+        String z = "kota";
+        String zad3 = x + y + z;
+        System.out.println(zad3);
+        System.out.println("Zadanie 4");
+        String x1 = "* ";
+        String x2 = "  ";
+        System.out.println(x2.repeat(10) + x1.repeat(1));
+        System.out.println(x2.repeat(10) + x1.repeat(2));
+        System.out.println(x2.repeat(10) + x1.repeat(3));
+        System.out.println(x1.repeat(14));
+        System.out.println(x1.repeat(15));
+        System.out.println(x1.repeat(14));
+        System.out.println(x2.repeat(10) + x1.repeat(3));
+        System.out.println(x2.repeat(10) + x1.repeat(2));
+        System.out.println(x2.repeat(10) + x1.repeat(1));
+        String x3 = " *";
+        String x4 = " ";
+        System.out.println(x4.repeat(5) + x3);
+        System.out.println(x4.repeat(4) + x3.repeat(2));
+        System.out.println(x4.repeat(3) + x3.repeat(3));
+        System.out.println(x4.repeat(2) + x3.repeat(4));
+        System.out.println(x4.repeat(1) + x3.repeat(5));
+        System.out.println(x3.repeat(6));
+        System.out.println(x4.repeat(1) + x3.repeat(5));
+        System.out.println(x4.repeat(2) + x3.repeat(4));
+        System.out.println(x4.repeat(3) + x3.repeat(3));
+        System.out.println(x4.repeat(4) + x3.repeat(2));
+        System.out.println(x4.repeat(5) + x3);
+        System.out.println("Zadanie 5");
+        String zad56 = "Ala ma kota";
+        System.out.println(zad56.replace("a","e"));
+        System.out.println("Zadanie 6");
+        System.out.println(zad56.toUpperCase());
+        System.out.println(zad56.toLowerCase());
+        System.out.println("Zadanie 7");
+        int ascii1 = 'A'; 
+        int ascii2 = '!';
+        int ascii3 = '@';
+        int ascii4 = '>';
+        int ascii5 = '~';
+        int ascii6 = '\n';
+        int ascii7 = '\b';
+        System.out.println(ascii1);
+        System.out.println(ascii2);
+        System.out.println(ascii3);
+        System.out.println(ascii4);
+        System.out.println(ascii5);
+        System.out.println(ascii6);
+        System.out.println(ascii7);
+        System.out.println("Zadanie 9");
+        String tekst = "Grzesiek nie wiedzial dlaczego ... jest tak drapieznym ... mimo, ze jego ... na to nie wskazuje.";
+        tekst = tekst.replaceFirst("\\.\\.\\.","abc");
+        tekst = tekst.replaceFirst("\\.\\.\\.","def");
+        tekst = tekst.replaceFirst("\\.\\.\\.","ghi");
+        System.out.println(tekst);
+        System.out.println("Zadanie 10");
+        String tekst2 = "... to najlepsza ksiazka napisana przez ...";
+        tekst2 = tekst2.replaceFirst("\\.\\.\\.","Harry Potter");
+        tekst2 = tekst2.replaceFirst("\\.\\.\\.","J. K. Rowling");
+        System.out.println(tekst2);
+        System.out.println("Zadanie 11");
+        String wodrze = "wodrze ";
+        System.out.println(wodrze.repeat(5));
+        System.out.println("Zadanie 12");
+        String zad12 = "Dzisiaj jest (dd-mm-rrrr) godzina (hh:mm:ss)";
+        
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDateTime myDateObj = LocalDateTime.now();
+        String formattedDate = myDateObj.format(myFormatObj);
+        
+        zad12 = zad12.replace("(dd-mm-rrrr)",formattedDate);
+        
+        DateTimeFormatter godzina = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String fgodzina = myDateObj.format(godzina);
+        
+        zad12 = zad12.replace("(hh:mm:ss)",fgodzina);
+        System.out.println(zad12);
+        
+        System.out.println("Zadanie 13");
+        char zad131 = 54, zad132 =  103, zad133 = 241, zad134 = 67;
+        int zad135 = 9999, zad136 = 16, zad137 = 174919;
+        System.out.println(zad131);
+        System.out.println(zad132);
+        System.out.println(zad133);
+        System.out.println(zad134);
+        System.out.println((char)zad135);
+        System.out.println((char)zad136);
+        System.out.println((char)zad137);
+    }
+}
