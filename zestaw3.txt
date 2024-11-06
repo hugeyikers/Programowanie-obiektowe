@@ -1,0 +1,430 @@
+import static java.lang.Math.*;
+import java.util.Scanner;
+
+class zestaw3
+{
+    static void trojkiPitagorejskie(int n)
+    {
+        for(int a = 1; a<=n; a++)
+        {
+            for(int b = a+1; b<=n; b++)
+            {
+                for(int c = b+1; c<=n;c++)
+                {
+                    if(Math.pow(a,2)+Math.pow(b,2)==Math.pow(c,2))
+                    {
+                        System.out.println(a+" "+b+" "+c);
+                    }
+                }
+            }
+        }
+    }
+    
+    static void funKwaRozwiazania(int n)
+    {
+        for(int a = 1; a<=n; a++)
+        {
+            for(int b = 0; b<=n; b++)
+            {
+                for(int c = 0; c<=n;c++)
+                {
+                    if(Math.pow(b,2)-4*a*c>=0)
+                    {
+                        System.out.println(a+" "+b+" "+c);
+                    }
+                }
+            }
+        }
+    }
+    
+    static void funKwaDelta(int n)
+    {
+        for(int a = 1; a<=n; a++)
+        {
+            for(int b = 0; b<=n; b++)
+            {
+                for(int c = 0; c<=n;c++)
+                {
+                    int delta = (int)Math.pow(b,2)-4*a*c;
+                    if(delta>=0)
+                    {
+                        int sqrtdelta = (int)Math.sqrt(delta);
+                        if(sqrtdelta*sqrtdelta==delta)
+                        {
+                            System.out.println(a+" "+b+" "+c);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    static void liczbyPierwsze(int n)
+    {
+        for(int i=2; i<=n; i++)
+        {
+            int suma=0;
+            for(int j=1; j<=n;j++)
+            {
+                if(i%j==0)
+                {
+                    suma++;
+                }
+            }
+            if(suma==2)
+            {
+                System.out.println(i);
+            }
+        }
+    }
+    
+    static void liczbyPodzielne(int m,int n)
+    {
+        int a = (int)Math.pow(10, m-1);
+        for(int i = a; i<(a*10)-1; i++)
+        {
+            if(i%n==0)
+            {
+                System.out.println(i);
+            }
+        }
+    }
+    
+    static void piramida(int n, int variant)
+    {
+        String a = " ";
+        String b = "* ";
+        if(variant == 1)
+        {
+            for(int i=0;i<n;i++)
+            {
+                System.out.println(a.repeat(n-i)+b.repeat(i+1));
+            }
+        }
+        else if(variant == 2)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.println(b.repeat(j+1));
+            }
+        }
+        else
+        {
+            System.out.println("Wybierz wariant 1 lub 2");
+        }
+    }
+    
+    static void silnia(int n)
+    {
+        if(n==0)
+        {
+            System.out.println(1);
+        }
+        else
+        {
+            int a = 1;
+            for(int i=1;i<=n;i++)
+            {
+                a=a*i;
+            }
+            System.out.println(a);
+        }
+    }
+    
+    static void silniaPodwojna(int n)
+    {
+        if(n==0)
+        {
+            System.out.println(1);
+        }
+        else
+        {
+            int a=1;
+            if(n%2==0)
+            {
+                for(int i=2;i<=n;i++)
+                {
+                    a = a*i;
+                    i++;
+                }
+            }
+            else
+            {
+                for(int i=1;i<=n;i++)
+                {
+                    a = a*i;
+                    i++;
+                }
+            }
+            System.out.println(a);
+        }
+    }
+    
+    static void silnia(int m,int n)
+    {
+        if(n==0)
+        {
+            System.out.println(1);
+        }
+        else
+        {
+            int a=1;
+            int c;
+            if(n%m==0)
+            {
+                c=(int)(n/m);
+            }
+            else
+            {
+               c=(int)((n/m)+1);
+            }
+            for(int i=0;i<c;i++)
+            {
+                a=a*n;
+                n=n-m;
+            }
+            System.out.println(a);
+        }
+    }
+    
+    static void dwumianNewtona(int n, int k)
+    {
+        int a=1;
+        int b=1;
+        int c=1;
+        int d;
+        for(int i=1;i<=n;i++)
+        {
+            a=a*i;
+        }
+        for(int i=1;i<=k;i++)
+        {
+            b=b*i;
+        }
+        for(int i=1;i<=(n-k);i++)
+        {
+            c=c*i;
+        }
+        d=a/(b*c);
+        System.out.println(d);
+    }
+    
+    static void ciagFibonacciego(int n)
+    {
+        int a = 1;
+        int b = 1;
+        int c;
+        System.out.println(a);
+        System.out.println(b);
+        
+        for(int i=1;i<=(n-2);i++)
+        {
+            c=a+b;
+            a=b;
+            b=c;
+            System.out.println(c);
+        }
+    }
+    
+    static void sumaNaturalnych(int n)
+    {
+        int a=0;
+        for(int i=0;i<n;i++)
+        {
+            a=a+i;
+        }
+        System.out.println(a);
+    }
+    
+    static void sumaParzystych(int n)
+    {
+        int a=0;
+        for(int i=0;i<n*2;i++)
+        {
+            if(i%2==0)
+            {
+                a=a+i;
+            }
+        }
+        System.out.println(a);
+    }
+    
+    static void sumaNieparzystych(int n)
+    {
+        int a=0;
+        for(int i=0;i<n*2;i++)
+        {
+            if(i%2!=0)
+            {
+                a=a+i;
+            }
+        }
+        System.out.println(a);
+    }
+    
+    static void sumaKwaNaturalnych(int n)
+    {
+        int a=0;
+        for(int i=0;i<n;i++)
+        {
+            a=a+((int)Math.pow(i,2));
+        }
+        System.out.println(a);
+    }
+    
+    static void sumaSzeNaturalnych(int n)
+    {
+        int a=0;
+        for(int i=0;i<n;i++)
+        {
+            a=a+((int)Math.pow(i,3));
+        }
+        System.out.println(a);
+    }
+    
+    static void sumaOdwNaturalnych(int n)
+    {
+        double a=0;
+        for(int i=1;i<=n;i++)
+        {
+            a=a+(1.0/i);
+        }
+        System.out.println(a);
+    }
+    
+    static void czyPalindrom(String wyraz)
+    {
+        int a = wyraz.length();
+        for(int i=0;i<a;i++)
+        {
+            if(wyraz.charAt(i)!=wyraz.charAt(a-1-i))
+            {
+                System.out.println(false);
+                break;
+            }
+            else
+            {
+                if(i==4)
+                {
+                    System.out.println(true);
+                }
+            }
+        }
+    }
+    
+    static void czyDoskonala(int n)
+    {
+        int a=0;
+        for(int i=1;i<n;i++)
+        {
+            if(n%i==0)
+            {
+                a=a+i;
+            }
+        }
+        if(a==n)
+        {
+            System.out.println(true);
+        }
+        else
+        {
+            System.out.println(false);
+        }
+    }
+    
+    static void czyPierwsza(int n)
+    {
+        int a=0;
+        for(int i=1;i<=n;i++)
+        {
+            if(n%i==0)
+            {
+                a++;
+            }
+        }
+        if(a==2)
+        {
+            System.out.println(true);
+        }
+        else
+        {
+            System.out.println(false);
+        }
+    }
+    
+    static void NWD(int a, int b)
+    {
+        while(b!=0)
+        {
+            int pom=b;
+            b = a%b;
+            a = pom;
+        }
+        System.out.println(a);
+    }
+    
+    static int[] wczytajTablice(int n)
+    {
+        int[] tab=new int[n];
+        Scanner a = new Scanner(System.in);
+        for(int i=0;i<n;i++)
+        {
+            System.out.println("Podaj liczbe: ");
+            int b = a.nextInt();
+            tab[i]=b;
+        }
+        return tab;
+    }
+    
+    public static void main(String[] args) {
+        /*
+        trojkiPitagorejskie(10);
+        
+        funKwaRozwiazania(5);
+        
+        funKwaDelta(5);
+        
+        liczbyPierwsze(6);
+        
+        liczbyPodzielne(2,10);
+        
+        piramida(5,1);
+        
+        silnia(4);
+        
+        silniaPodwojna(5);
+        
+        silnia(4,5);
+        
+        dwumianNewtona(5,5);
+        
+        ciagFibonacciego(7);
+        
+        sumaNaturalnych(5);
+        
+        sumaParzystych(7);
+        
+        sumaNieparzystych(6);
+        
+        sumaKwaNaturalnych(5);
+        
+        sumaSzeNaturalnych(4);
+        
+        sumaOdwNaturalnych(4);
+        
+        czyPalindrom("kajak");
+        
+        czyDoskonala(28);
+        
+        czyPierwsza(4);
+        
+        NWD(18,24);
+        
+        int[] a = wczytajTablice(5);
+        for(int i=0;i<5;i++)
+        {
+            System.out.print(a[i]);
+        }
+        
+    }
+}
