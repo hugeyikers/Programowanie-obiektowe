@@ -1,0 +1,485 @@
+import java.util.Random;
+import static java.lang.Math.*;
+import java.util.Arrays;
+
+class zestaw4 {
+    
+    public static int[] generujTablice(int n, int minWartosc, int maxWartosc)
+    {
+        int a = n;
+        int[] tab = new int[n];
+        Random random = new Random();
+        for(int i=0;i<n;i++)
+        {
+            int randomliczba = minWartosc + random.nextInt(maxWartosc - minWartosc + 1);
+            tab[i]=randomliczba;
+            System.out.print(tab[i]+" ");
+        }
+        return tab;
+    }
+    
+    public static void wypiszTablice(int n, int m, int[][] tab)
+    {
+        int ilosc=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(tab[i][j]!=0)
+                {
+                    ilosc++;
+                }
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(n*m==ilosc)
+                {
+                    System.out.printf("%4d", tab[i][j]);
+                }
+                if(n*m>ilosc)
+                {
+                    if(tab[i][j]!=0)
+                    {
+                        System.out.printf("%4d", tab[i][j]);
+                    }
+                    else
+                    {
+                        System.out.print("    ");
+                    }
+                }
+            }
+            System.out.println();
+        }
+        
+    }
+    
+    public static void ileNieparzystych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]%2!=0)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc nieparzystych: "+a);
+    }
+    
+    public static void ileParzystych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]%2==0)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc parzystych: "+a);
+    }
+    
+    public static void ileDodatnich(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]>0)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc dodatnich: "+a);
+    }
+    
+    public static void ileUjemnych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]<0)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc ujemnych: "+a);
+    }
+    
+    public static void ileZerowych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]==0)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc zerowych: "+a);
+    }
+    
+    public static void ileMaxymalnych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]==10)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc maksymalnych: "+a);
+    }
+    
+    public static void ileMinimalnych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]==-10)
+            {
+                a++;
+            }
+        }
+        System.out.println("ilosc minimalnych: "+a);
+    }
+    
+    public static void ileUnikalnych(int[] tab)
+    {
+        int b=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            int a=0;
+            for(int j=0;j<tab.length;j++)
+            {
+                if(tab[i]==tab[j])
+                {
+                    a++;
+                }
+                if(a==2)
+                {
+                    break;
+                }
+                if(j==tab.length-1)
+                {
+                    if(a==1)
+                    {
+                        b++;
+                    }
+                }
+            }
+        }
+        System.out.println("ilosc unikalnych: "+b);
+    }
+    
+    public static void sumaDodatnich(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]>0)
+            {
+                a=a+tab[i];
+            }
+        }
+        System.out.println("suma dodatnich: "+a);
+    }
+    
+    public static void sumaUjemnych(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]<0)
+            {
+                a=a+tab[i];
+            }
+        }
+        System.out.println("suma ujemnych: "+a);
+    }
+    
+    public static void sumaOdwrotnosci(int[] tab)
+    {
+        double a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]==0)
+            {
+                continue;
+            }
+            else
+            {
+                a=a+(1.0/tab[i]);
+            }
+        }
+        System.out.println("suma odwrotnosci: "+a);
+    }
+    
+    public static void sredniaArytmetyczna(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            a=a+tab[i];
+        }
+        int b = (a/tab.length);
+        System.out.println("srednia arytmetyczna: "+b);
+    }
+    
+    public static void sredniaGeometryczna(int[] tab)
+    {
+        int a=1;
+        for(int i=0;i<tab.length;i++)
+        {
+            a=a*tab[i];
+        }
+        double b = Math.pow(a,(1.0/tab.length));
+        System.out.println("srednia geometryczna: "+b);
+    }
+    
+    public static void sredniaHarmoniczna(int[] tab)
+    {
+        double a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]==0)
+            {
+                continue;
+            }
+            else
+            {
+                a=a+(1.0/tab[i]);
+            }
+        }
+        double b = (tab.length/a);
+        System.out.println("srednia harmoniczna: "+b);
+    }
+    
+    public static int[] funkcjaLiniowa(int[] tab, int a, int b)
+    {
+        int[] tab2 = new int[tab.length];
+        for(int i=0;i<tab.length;i++)
+        {
+            tab2[i]= (a*tab[i])+b;
+            System.out.print(tab2[i]+ " ");
+        }
+        System.out.println();
+        return tab2;
+    }
+    
+    public static int[] funkcjaKwadratowa(int[] tab, int a, int b, int c)
+    {
+        int[] tab2 = new int[tab.length];
+        for(int i=0;i<tab.length;i++)
+        {
+            tab2[i]= (a*((int)Math.pow(tab[i],2)))+(b*tab[i])+c;
+            System.out.print(tab2[i]+ " ");
+        }
+        System.out.println();
+        return tab2;
+    }
+    
+    public static double[] funkcjaWykladnicza(int[] tab, int a)
+    {
+        double[] tab2 = new double[tab.length];
+        for(int i=0;i<tab.length;i++)
+        {
+            tab2[i]= (double)Math.pow(a,tab[i]);
+            System.out.print(tab2[i]+ " ");
+        }
+        System.out.println();
+        return tab2;
+    }
+    
+    public static int[] funkcjaSignum(int[] tab)
+    {
+        int[] tab2 = new int[tab.length];
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]>0)
+            {
+                tab2[i]=1;
+                System.out.print(tab2[i]+ " ");
+            }
+            else if(tab[i]<0)
+            {
+                tab2[i]=-1;
+                System.out.print(tab2[i]+ " ");
+            }
+            else
+            {
+                tab2[i]=0;
+                System.out.print(tab2[i]+ " ");
+            }
+        }
+        System.out.println();
+        return tab2;
+    }
+    
+    public static int dlugosctablicy(int[] tab)
+    {
+        int a=0;
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]!=0)
+            {
+                a++;
+            }
+        }
+        return a;
+    }
+    
+    public static void najdluzszyCiagDodatnich(int[] tab)
+    {
+        int[] a= new int[tab.length];
+        int[] b= new int[tab.length];
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]>0)
+            {
+                a[i]=tab[i];
+            }
+            if(tab[i]<0)
+            {
+                if(dlugosctablicy(a)>dlugosctablicy(b))
+                {
+                    b = Arrays.copyOf(a, a.length);
+                }
+                a= new int[tab.length];
+            }
+        }
+        
+        if (dlugosctablicy(a) > dlugosctablicy(b)) {
+            b = Arrays.copyOf(a, a.length);
+        }
+        
+        for(int j=0;j<b.length;j++)
+        {
+            if(b[j]!=0)
+            {
+                System.out.print(b[j]+" ");
+            }
+        }
+        System.out.println();
+    }
+    
+    public static void najdluzszyCiagUjemnych(int[] tab)
+    {
+        int[] a= new int[tab.length];
+        int[] b= new int[tab.length];
+        for(int i=0;i<tab.length;i++)
+        {
+            if(tab[i]<0)
+            {
+                a[i]=tab[i];
+            }
+            if(tab[i]>0)
+            {
+                if(dlugosctablicy(a)>dlugosctablicy(b))
+                {
+                    b = Arrays.copyOf(a, a.length);
+                }
+                a= new int[tab.length];
+            }
+        }
+        
+        if (dlugosctablicy(a) > dlugosctablicy(b)) {
+            b = Arrays.copyOf(a, a.length);
+        }
+        
+        for(int j=0;j<b.length;j++)
+        {
+            if(b[j]!=0)
+            {
+                System.out.print(b[j]+" ");
+            }
+        }
+        System.out.println();
+    }
+    
+    public static void odwrocTablice(int[] tab)
+    {
+        int[] a= new int[tab.length];
+        int j=0;
+        for(int i=tab.length-1;i>=0;i--)
+        {
+            a[j]=tab[i];
+            System.out.print(a[j]+ " ");
+            j++;
+        }
+        System.out.println();
+    }
+    
+    public static void odwrocTablice(int[] tab, int indeksStart, int indeksStop)
+    {
+        int a;
+        for(int i=0;i<indeksStop-indeksStart+1;i++)
+        {
+            a=tab[indeksStart];
+            tab[indeksStart]=tab[indeksStop];
+            tab[indeksStop]=a;
+            indeksStart++;
+            indeksStop--;
+        }
+        for(int j=0;j<tab.length;j++)
+        {
+            System.out.print(tab[j]+ " ");
+        }
+        System.out.println();
+    }
+    
+    
+    public static void main(String[] args) {
+        generujTablice(8,-10,10);
+        
+        int n = 2;
+        int m = 3;
+        int[][] tab = new int[n][m];
+        tab[0][0] = 1;
+        tab[0][1] = 2;
+        tab[0][2] = 10;
+        tab[1][1] = 5;
+        tab[1][2] = 6;
+        wypiszTablice(n,m,tab);
+        
+        int[] tab = generujTablice(8,-10,10);
+        System.out.println();
+        ileNieparzystych(tab);
+        ileParzystych(tab);
+        ileDodatnich(tab);
+        ileUjemnych(tab);
+        ileZerowych(tab);
+        ileMaxymalnych(tab);
+        ileMinimalnych(tab);
+        ileUnikalnych(tab);
+        
+        int[] tab = generujTablice(4,-10,10);
+        System.out.println();
+        sumaDodatnich(tab);
+        sumaUjemnych(tab);
+        sumaOdwrotnosci(tab);
+        sredniaArytmetyczna(tab);
+        sredniaGeometryczna(tab);
+        sredniaHarmoniczna(tab);
+        
+        
+        int[] tab = generujTablice(5,-10,10);
+        System.out.println();
+        funkcjaLiniowa(tab,2,3);
+        funkcjaKwadratowa(tab,2,3,4);
+        funkcjaWykladnicza(tab,2);
+        funkcjaSignum(tab);
+        
+        
+        int[] tab = generujTablice(5,-5,10);
+        System.out.println();
+        najdluzszyCiagDodatnich(tab);
+        najdluzszyCiagUjemnych(tab);
+        odwrocTablice(tab);
+        odwrocTablice(tab, 1, 3);
+        
+    }
+}

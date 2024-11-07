@@ -1,0 +1,206 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class zestaw5 {
+    public static ArrayList<Integer> append(ArrayList<Integer> tab1, ArrayList<Integer> tab2)
+    {
+        ArrayList<Integer> lista = new ArrayList<>();
+        for(int i=0;i<tab1.size();i++)
+        {
+            lista.add(tab1.get(i));
+        }
+        for(int i=0;i<tab2.size();i++)
+        {
+            lista.add(tab2.get(i));
+        }
+        System.out.println(lista);
+        return lista;
+    }
+    
+    public static void merge(ArrayList<Integer> tab1, ArrayList<Integer> tab2)
+    {
+        ArrayList<Integer> lista = new ArrayList<>();
+        int wieksza;
+        if(tab1.size()>tab2.size())
+        {
+            wieksza = tab1.size();
+        }
+        else
+        {
+            wieksza = tab2.size();
+        }
+        int a=0;
+        while(a!=wieksza)
+        {
+            if(tab1.size()<tab2.size())
+            {
+                if(a<tab1.size())
+                {
+                    lista.add(tab1.get(a));
+                }
+                lista.add(tab2.get(a));
+            }
+            else if(tab1.size()>tab2.size())
+            {
+                lista.add(tab1.get(a));
+                if(a<tab2.size())
+                {
+                    lista.add(tab2.get(a));
+                }
+            }
+            else
+            {
+                lista.add(tab1.get(a));
+                lista.add(tab2.get(a));
+            }
+            a++;
+        }
+        System.out.println(lista);
+    }
+    
+    public static void mergeSorted(ArrayList<Integer> tab1, ArrayList<Integer> tab2)
+    {
+        ArrayList<Integer> lista = append(tab1,tab2);
+        ArrayList<Integer> lista2 = new ArrayList<>();
+        while(!lista.isEmpty())
+        {
+            int indeks=0;
+            for(int i=0;i<lista.size();i++)
+            {
+                if(lista.get(i) < lista.get(indeks))
+                {
+                    indeks=i;
+                }
+            }
+            lista2.add(lista.get(indeks));
+            lista.remove(indeks);
+        }
+        System.out.print(lista2);
+
+    }
+    
+    public static ArrayList<Character> toArrayList1(String napis)
+    {
+        String[] elementy = napis.split(" ");
+        ArrayList<Character> lista = new ArrayList<>();
+        for(char ch : napis.toCharArray())
+        {
+            lista.add(ch);
+        }
+        char a;
+        for(int i=0;i<lista.size();i++)
+        {
+            for(int j=0;j<lista.size()-i-1;j++)
+            {
+                if((int)lista.get(j)>(int)lista.get(j+1))
+                {
+                    a=lista.get(j);
+                    lista.set(j,lista.get(j+1));
+                    lista.set(j+1, a);
+                }
+            }
+        }
+        System.out.println(lista);
+        return lista;
+    }
+    
+    public static ArrayList<Integer> toArrayList2(int liczba)
+    {
+        ArrayList<Integer> lista = new ArrayList<>();
+        String number = Integer.toString(liczba);
+        for(char ch : number.toCharArray())
+        {
+            lista.add(Character.getNumericValue(ch));
+        }
+        int a;
+        for(int i=0;i<lista.size();i++)
+        {
+            for(int j=0;j<lista.size()-i-1;j++)
+            {
+                if(lista.get(j)>lista.get(j+1))
+                {
+                    a=lista.get(j);
+                    lista.set(j,lista.get(j+1));
+                    lista.set(j+1,a);
+                }
+            }
+        }
+        System.out.println(lista);
+        return lista;
+    }
+    
+    public static boolean checkChar(ArrayList<Character> tab, char znak)
+    {
+        for(int i=0;i<tab.size();i++)
+        {
+            if(tab.get(i)==znak)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean checkDigit(ArrayList<Integer> tab, int cyfra)
+    {
+        for(int i=0;i<tab.size();i++)
+        {
+            if(tab.get(i)==cyfra)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static int countChar(ArrayList<Character> tab, char znak)
+    {
+        int a=0;
+        for(int i=0;i<tab.size();i++)
+        {
+            if(tab.get(i)==znak)
+            {
+                a++;
+            }
+        }
+        return a;
+    }
+    
+    public static int countDigit(ArrayList<Integer> tab, int cyfra)
+    {
+        int a=0;
+        for(int i=0;i<tab.size();i++)
+        {
+            if(tab.get(i)==cyfra)
+            {
+                a++;
+            }
+        }
+        return a;
+    }
+    
+    public static void main(String[] args) {
+        int n=3;
+        ArrayList<Integer> lista1 = new ArrayList<>(n){{
+            add(3);
+            add(2);
+            add(5);
+        }};
+        ArrayList<Integer> lista2 = new ArrayList<>(n){{
+            add(1);
+            add(4);
+            add(3);
+        }};
+        append(lista1, lista2);
+        merge(lista1, lista2);
+        mergeSorted(lista1, lista2);
+        toArrayList1("zadanie");
+        toArrayList2(512);
+        System.out.println(checkChar(toArrayList1("zadanie"), 'e'));
+        System.out.println(checkDigit(toArrayList2(512), 3));
+        System.out.println(countChar(toArrayList1("zadanie"), 'a'));
+        System.out.println(countDigit(toArrayList2(6121), 1));
+        
+        
+    }
+}
