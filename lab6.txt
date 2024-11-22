@@ -1,0 +1,49 @@
+public class Produkt {
+    String nazwa;
+    double cena;
+    int iloscNaMagazynie;
+
+    public Produkt(String nazwa, double cena, int iloscNaMagazynie)
+    {
+        this.nazwa=nazwa;
+        this.cena=cena;
+        this.iloscNaMagazynie=iloscNaMagazynie;
+    }
+
+    public void wyswietlInformacje()
+    {
+        System.out.println("nazwa: "+ nazwa);
+        System.out.println("cena: "+ cena);
+        System.out.println("ilosc na magazynie: "+ iloscNaMagazynie);
+    }
+
+    public void dodajDoMagazynu(int a)
+    {
+        iloscNaMagazynie+=a;
+        System.out.println("ilosc na magazynie: "+ iloscNaMagazynie);
+    }
+
+    public void usunZMagazynu(int a)
+    {
+        if(iloscNaMagazynie>=a)
+        {
+            iloscNaMagazynie-=a;
+            System.out.println("ilosc na magazynie: "+ iloscNaMagazynie);
+        }
+        else
+        {
+            System.out.println("na magazynie nie ma wystarczajacej ilosci towaru");
+            System.out.println("ilosc na magazynie: "+ iloscNaMagazynie);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Produkt produkt = new Produkt("Chleb", 2.50, 100);
+        produkt.wyswietlInformacje();
+        produkt.dodajDoMagazynu(5);
+        produkt.usunZMagazynu(110);
+    }
+}
