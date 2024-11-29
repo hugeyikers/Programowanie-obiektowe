@@ -1,0 +1,118 @@
+public class Magazyn {
+
+    String produkty;
+    int ilosc;
+
+    public Magazyn(String produkty, int ilosc)
+    {
+        this.produkty=produkty;
+        this.ilosc=ilosc;
+    }
+
+    public String getProdukty()
+    {
+        return produkty;
+    }
+}
+
+
+
+
+public class Adres {
+    private String ulica;
+    private int numerDomu;
+    private int numerMieszkania;
+    private String miasto;
+    private String kodPocztowy;
+
+    public Adres(String ulica, int numerDomu, int numerMieszkania, String miasto, String kodPocztowy){
+        this.ulica=ulica;
+        this.numerDomu=numerDomu;
+        this.numerMieszkania=numerMieszkania;
+        this.miasto=miasto;
+        this.kodPocztowy=kodPocztowy;
+    }
+
+    public Adres(String ulica, int numerDomu, String miasto, String kodPocztowy)
+    {
+        this.ulica=ulica;
+        this.numerDomu=numerDomu;
+        this.numerMieszkania=0;
+        this.miasto=miasto;
+        this.kodPocztowy=kodPocztowy;
+    }
+
+    public String getUlica()
+    {
+        return ulica;
+    }
+
+    public int getnumerDomu()
+    {
+        return numerDomu;
+    }
+
+    public int getNumerMieszkania()
+    {
+        return numerMieszkania;
+    }
+
+    public String getmiasto()
+    {
+        return miasto;
+    }
+
+    public String getkodPocztowy()
+    {
+        return kodPocztowy;
+    }
+
+
+    public void pokaz()
+    {
+        System.out.println("Kod pocztowy: " +getkodPocztowy() + " Miasto: " +getmiasto());
+        if(getNumerMieszkania()==0)
+        {
+            System.out.println("Ulica: " +getUlica() + " Numer domu: " +getnumerDomu());
+        }
+        else
+        {
+            System.out.println("Ulica: " +getUlica() + " Numer domu: " +getnumerDomu() + " Numer mieszkania: " +getNumerMieszkania());
+        }
+    }
+
+    public boolean przed(Adres adres2)
+    {
+        int kod1 = Integer.parseInt(getkodPocztowy().replace(Character.toString('-'), ""));
+        int kod2 = Integer.parseInt(adres2.getkodPocztowy().replace(Character.toString('-'), ""));
+        if(kod1>kod2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        Magazyn magazyn = new Magazyn("Jajka", 30);
+        System.out.println(magazyn.getProdukty() + " ilość: " + magazyn.ilosc);
+        System.out.println();
+
+        Adres adres1 = new Adres("Truskawkowa", 1,  12,"Olsztyn", "10-000");
+        adres1.pokaz();
+        Adres adres2 = new Adres("Akacjowa", 10,"Olsztynek", "10-200");
+        adres2.pokaz();
+        System.out.println();
+        System.out.println(adres1.przed(adres2));
+
+    }
+}
+
+
